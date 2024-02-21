@@ -17,10 +17,10 @@ module Moderable
       rejection_probability = moderation_api_predict(content, language)
       #puts "#{rejection_probability}"
       # Stockage du résultat dans la colonne is_accepted
-      #on stocke dans le cas la probabilite retourner est superieur à 0.5
+      #l'api nous retourne la probabilite que le contenu doit etre réjecter
 
-      #update_columns("is_#{column}_accepted" => rejection_probability > 0.5)
-      assign_attributes("is_#{column}_accepted" => rejection_probability > 0.5)
+      #update_columns("is_#{column}_accepted" => rejection_probability < 0.5)
+      assign_attributes("is_#{column}_accepted" => rejection_probability < 0.5)
     end
   end
 
